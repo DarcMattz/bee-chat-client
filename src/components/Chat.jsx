@@ -51,7 +51,6 @@ const Chat = () => {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 setUsername(e.target.value);
-                joinChat(); // Call joinChat when Enter is pressed
               }
             }}
           />
