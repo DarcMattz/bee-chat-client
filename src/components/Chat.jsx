@@ -34,6 +34,10 @@ const Chat = () => {
   };
 
   const joinChat = () => {
+    if (username == "" || username == null) {
+      alert("Add a Name!");
+      return;
+    }
     socket.emit("join", username);
   };
 
@@ -44,7 +48,12 @@ const Chat = () => {
           <input
             type="text"
             placeholder="Enter your name"
-            onChange={(e) => setUsername(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setUsername(e.target.value);
+                alert("Name Added!");
+              }
+            }}
           />
           <button onClick={joinChat}>Join Chat</button>
         </div>
