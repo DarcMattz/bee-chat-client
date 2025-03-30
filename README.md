@@ -1,4 +1,4 @@
-# Bee-Chat Frontend
+# 🐝 Bee-Chat Frontend
 
 Bee-Chat is a real-time chat application built using **React.js** and **Socket.io-client**. This repository contains the frontend for the chat system.
 
