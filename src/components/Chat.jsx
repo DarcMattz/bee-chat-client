@@ -48,9 +48,13 @@ const Chat = () => {
           <input
             type="text"
             placeholder="Enter your name"
+            onChange={(e) => {
+              setUsername(e.target.value);
+              console.log(username);
+            }} // Update state
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                setUsername(e.target.value);
+                joinChat(); // Call joinChat when Enter is pressed
               }
             }}
           />
