@@ -34,7 +34,7 @@ const Chat = () => {
   };
 
   const joinChat = () => {
-    if (username == "" || username == null) {
+    if (!username.trim()) {
       alert("Add a Name!");
       return;
     }
@@ -48,10 +48,10 @@ const Chat = () => {
           <input
             type="text"
             placeholder="Enter your name"
+            onChange={(e) => setUsername(e.target.value)} // Update state
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                setUsername(e.target.value);
-                alert("Name Added!");
+                joinChat(); // Call joinChat when Enter is pressed
               }
             }}
           />
