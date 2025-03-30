@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://bee-chat-server.up.railway.app"); // Connect to server
+const socket = io("https://bee-chat-server.up.railway.app", {
+  transports: ["websocket"],
+});
 
 const Chat = () => {
   const [username, setUsername] = useState("");
