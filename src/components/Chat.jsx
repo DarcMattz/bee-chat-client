@@ -9,6 +9,7 @@ const Chat = () => {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [joined, setJoined] = useState(false);
 
   useEffect(() => {
     socket.on("message", (msg) => {
@@ -38,12 +39,13 @@ const Chat = () => {
       alert("Add a Name!");
       return;
     }
+    setJoined(true);
     socket.emit("join", username);
   };
 
   return (
     <div>
-      {!username ? (
+      {!joined ? (
         <div>
           <input
             type="text"
