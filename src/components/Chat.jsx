@@ -8,6 +8,7 @@ const Chat = () => {
   const [username, setUsername] = useState("");
   const [messages, setMessages] = useState([]);
   const [joined, setJoined] = useState(false);
+  const [userCount, setUserCount] = useState(0); // Track active users
 
   useEffect(() => {
     socket.on("message", (msg) => {
@@ -22,10 +23,15 @@ const Chat = () => {
       setMessages((prev) => [...prev, { user, text: "left the chat" }]);
     });
 
+    socket.on("userCount", (count) => {
+      setUserCount(count);
+    });
+
     return () => {
       socket.off("message");
       socket.off("userJoined");
       socket.off("userLeft");
+      socket.off("userCount");
     };
   }, []);
 
@@ -42,14 +48,17 @@ const Chat = () => {
   return (
     <div className="flex flex-col items-center p-4 py-15 w-full">
       {!joined ? (
-        <Login onJoin={joinChat} />
+        <>
+          <div className="text-center text-gray-700 dark:text-white font-semibold mb-2">
+            Active Users: {userCount}
+          </div>
+          <Login onJoin={joinChat} />
+        </>
       ) : (
         <div className="w-full">
-          <div className="">
-            {" "}
-            {/* Add margin-bottom to prevent overlap */}
-            <Messages messages={messages} username={username}/>
-          </div>
+          {/* Show the user count */}
+
+          <Messages messages={messages} username={username} />
           <MessageInput onSend={sendMessage} />
         </div>
       )}
