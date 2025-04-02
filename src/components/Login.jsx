@@ -15,7 +15,7 @@ const Login = ({ onJoin }) => {
     <div className="flex flex-col items-center justify-center mt-50">
       <div className="bg-yellow-200 dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full">
         <h2 className="text-xl font-semibold text-gray-700 dark:text-white text-center mb-4 ">
-          Welcome to Bee-Chat 🐝
+          Welcome to Bee-Chat!
         </h2>
         <input
           type="text"
