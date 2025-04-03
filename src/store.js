@@ -24,7 +24,9 @@ const useChatStore = create((set) => ({
 
   leaveChat: () => {
     socket.emit("leave");
-    set({ username: "", joined: false, messages: [] });
+    socket.once("userLeft", () => {
+      set({ username: "", joined: false, messages: [] });
+    });
   },
 }));
 
